@@ -1,0 +1,20 @@
+2026-10-09 19:15:02,734 - INFO - Logging initialized at: /home/joyadwoa/projects/module5_is601/test_logs/test_log.log
+2026-10-09 19:15:02,734 - INFO - No history file found - starting with empty history
+2026-10-09 19:15:02,734 - INFO - Calculator initialized with configuration
+2026-10-09 19:15:02,734 - INFO - Added observer: LoggingObserver
+2026-10-09 19:15:02,734 - INFO - Added observer: AutoSaveObserver
+2026-10-09 19:15:02,736 - INFO - Logging initialized at: /home/joyadwoa/projects/module5_is601/test_logs/test_log.log
+2026-10-09 19:15:02,736 - INFO - No history file found - starting with empty history
+2026-10-09 19:15:02,736 - INFO - Calculator initialized with configuration
+2026-10-09 19:15:02,736 - INFO - Added observer: LoggingObserver
+2026-10-09 19:15:02,736 - INFO - Added observer: AutoSaveObserver
+2026-10-09 19:15:02,739 - INFO - Empty history saved
+2026-10-09 19:15:02,741 - INFO - Logging initialized at: /home/joyadwoa/projects/module5_is601/test_logs/test_log.log
+2026-10-09 19:15:02,743 - INFO - Loaded empty history file
+2026-10-09 19:15:02,743 - INFO - Calculator initialized with configuration
+2026-10-09 19:15:02,743 - INFO - Added observer: LoggingObserver
+2026-10-09 19:15:02,743 - INFO - Added observer: AutoSaveObserver
+2026-10-09 19:15:02,743 - INFO - Set operation: Addition
+2026-10-09 19:15:02,743 - INFO - Calculation performed: Addition (2, 3) = 5
+2026-10-09 19:15:02,744 - INFO - History saved successfully to /home/joyadwoa/projects/module5_is601/test_history/test_history.csv
+2026-10-09 19:15:02,774 - INFO - History auto-saved
