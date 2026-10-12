@@ -51,6 +51,11 @@ def test_invalid_root():
         Calculation(operation="Root", operand1=Decimal("-16"), operand2=Decimal("2"))
 
 
+def test_root_zero_degree():
+    """Test that calculating the root with degree zero raises an OperationError."""
+    with pytest.raises(OperationError, match="Cannot calculate root with degree zero"):
+        Calculation("Root", Decimal("16"), Decimal("0"))
+
 def test_unknown_operation():
     with pytest.raises(OperationError, match="Unknown operation"):
         Calculation(operation="Unknown", operand1=Decimal("5"), operand2=Decimal("3"))
