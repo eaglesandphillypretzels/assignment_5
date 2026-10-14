@@ -135,3 +135,59 @@ def test_from_dict_result_mismatch(caplog):
 
     # Assert
     assert "Loaded calculation result 10 differs from computed result 5" in caplog.text
+
+def test_calculation_overflow():
+    """Test that calculation failures (like OverflowError) are caught and wrapped in OperationError."""
+    with pytest.raises(OperationError, match="Calculation failed"):
+        # float(10) ** 1000 will raise an OverflowError (subclass of ArithmeticError)
+        Calculation(operation="Power", operand1=Decimal("10"), operand2=Decimal("1000"))
+
+def test_format_result_invalid_operation():
+    """Test that format_result handles InvalidOperation (e.g., when result is Infinity)."""
+    # Adding Infinity to 1 results in Decimal('Infinity')
+    calc = Calculation(operation="Addition", operand1=Decimal("Infinity"), operand2=Decimal("1"))
+    
+    # Quantizing Infinity raises InvalidOperation, which should be caught and return the raw string
+    assert calc.format_result() == "Infinity"
+
+def test_equality_not_implemented():
+    """Test that comparing a Calculation to a non-Calculation object returns NotImplemented."""
+    calc1 = Calculation(operation="Addition", operand1=Decimal("2"), operand2=Decimal("3"))
+    
+    # Comparing to a string should fall back to identity comparison (which is False for !=)
+    # but internally it exercises the `return NotImplemented` branch.
+    assert calc1 != "not a calculation"
+    assert calc1 != 123
+
+def test_str_representation():
+    """
+    Test the __str__ method returns the correct human-readable format.
+    """
+    calc = Calculation(operation="Addition", operand1=Decimal("2"), operand2=Decimal("3"))
+    
+    # Act
+    result_str = str(calc)
+    
+    # Assert
+    assert result_str == "Addition(2, 3) = 5"
+
+
+def test_repr_representation():
+    """
+    Test the __repr__ method returns the correct detailed format for debugging.
+    """
+    calc = Calculation(operation="Addition", operand1=Decimal("2"), operand2=Decimal("3"))
+    
+    # Act
+    result_repr = repr(calc)
+    
+    # Assert
+    # Note: Decimal objects in f-strings do not include quotes, so operand1=2, not '2'
+    expected_repr = (
+        f"Calculation(operation='Addition', "
+        f"operand1=2, "
+        f"operand2=3, "
+        f"result=5, "
+        f"timestamp='{calc.timestamp.isoformat()}')"
+    )
+    assert result_repr == expected_repr
