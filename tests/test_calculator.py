@@ -220,7 +220,16 @@ def test_calculator_repl_addition(mock_print, mock_input):
     calculator_repl()
     mock_print.assert_any_call("\nResult: 5")
 
-
+def test_get_history_dataframe(calculator):
+    operation = OperationFactory.create_operation('add')
+    calculator.set_operation(operation)
+    calculator.perform_operation(2, 3)
+    df = calculator.get_history_dataframe()
+    assert not df.empty
+    assert df.iloc[0]['operation'] == 'Addition'
+    assert df.iloc[0]['operand1'] == '2'
+    assert df.iloc[0]['operand2'] == '3'
+    assert df.iloc[0]['result'] == '5'
 
 
 
