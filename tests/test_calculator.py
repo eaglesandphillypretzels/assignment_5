@@ -184,7 +184,19 @@ def test_calculator_init_default_config_and_load_history_warning(mock_warning, m
         assert calculator.history[0].result == Decimal("5")
     except OperationError:
         pytest.fail("Loading history failed due to OperationError")
-        
+
+# Test get_history_dataframe method for retrieving history in DataFrame format
+
+def test_get_history_dataframe(calculator):
+    operation = OperationFactory.create_operation('add')
+    calculator.set_operation(operation)
+    calculator.perform_operation(2, 3)
+    df = calculator.get_history_dataframe()
+    assert not df.empty
+    assert df.iloc[0]['operation'] == 'Addition'
+    assert df.iloc[0]['operand1'] == '2'
+    assert df.iloc[0]['operand2'] == '3'
+    assert df.iloc[0]['result'] == '5'     
             
 # Test Clearing History
 
@@ -220,16 +232,7 @@ def test_calculator_repl_addition(mock_print, mock_input):
     calculator_repl()
     mock_print.assert_any_call("\nResult: 5")
 
-def test_get_history_dataframe(calculator):
-    operation = OperationFactory.create_operation('add')
-    calculator.set_operation(operation)
-    calculator.perform_operation(2, 3)
-    df = calculator.get_history_dataframe()
-    assert not df.empty
-    assert df.iloc[0]['operation'] == 'Addition'
-    assert df.iloc[0]['operand1'] == '2'
-    assert df.iloc[0]['operand2'] == '3'
-    assert df.iloc[0]['result'] == '5'
+
 
 
 
