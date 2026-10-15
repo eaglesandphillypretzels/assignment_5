@@ -42,6 +42,26 @@ def test_calculator_initialization(calculator):
     assert calculator.redo_stack == []
     assert calculator.operation_strategy is None
 
+@patch('app.calculator.Calculator.load_history')
+@patch('app.calculator.logging.warning')
+def test_calculator_init_default_config_and_load_history_warning(mock_warning, mock_load_history):
+    mock_load_history.side_effect = Exception("Disk read error")
+    
+    with patch.object(CalculatorConfig, 'log_dir', new_callable=PropertyMock) as mock_log_dir, \
+         patch.object(CalculatorConfig, 'log_file', new_callable=PropertyMock) as mock_log_file, \
+         patch.object(CalculatorConfig, 'history_dir', new_callable=PropertyMock) as mock_history_dir, \
+         patch.object(CalculatorConfig, 'history_file', new_callable=PropertyMock) as mock_history_file:
+        
+        mock_log_dir.return_value = Path("/tmp/test_logs")
+        mock_log_file.return_value = Path("/tmp/test_logs/calculator.log")
+        mock_history_dir.return_value = Path("/tmp/test_history")
+        mock_history_file.return_value = Path("/tmp/test_history/history.csv")
+        
+        calc = Calculator() # Instantiates with default config
+        
+        assert isinstance(calc.config, CalculatorConfig)
+        mock_warning.assert_called_with("Could not load existing history: Disk read error")
+
 # Test Logging Setup
 
 @patch('app.calculator.logging.info')
@@ -119,6 +139,7 @@ def test_save_history(mock_to_csv, calculator):
     calculator.save_history()
     mock_to_csv.assert_called_once()
 
+
 @patch('app.calculator.pd.read_csv')
 @patch('app.calculator.Path.exists', return_value=True)
 def test_load_history(mock_exists, mock_read_csv, calculator):
@@ -130,7 +151,27 @@ def test_load_history(mock_exists, mock_read_csv, calculator):
         'result': ['5'],
         'timestamp': [datetime.datetime.now().isoformat()]
     })
+
+@patch('app.calculator.Calculator.load_history')
+@patch('app.calculator.logging.warning')
+def test_calculator_init_default_config_and_load_history_warning(mock_warning, mock_load_history):
+    mock_load_history.side_effect = Exception("Disk read error")
     
+    with patch.object(CalculatorConfig, 'log_dir', new_callable=PropertyMock) as mock_log_dir, \
+         patch.object(CalculatorConfig, 'log_file', new_callable=PropertyMock) as mock_log_file, \
+         patch.object(CalculatorConfig, 'history_dir', new_callable=PropertyMock) as mock_history_dir, \
+         patch.object(CalculatorConfig, 'history_file', new_callable=PropertyMock) as mock_history_file:
+        
+        mock_log_dir.return_value = Path("/tmp/test_logs")
+        mock_log_file.return_value = Path("/tmp/test_logs/calculator.log")
+        mock_history_dir.return_value = Path("/tmp/test_history")
+        mock_history_file.return_value = Path("/tmp/test_history/history.csv")
+        
+        calc = Calculator() # Instantiates with default config
+        
+        assert isinstance(calc.config, CalculatorConfig)
+        mock_warning.assert_called_with("Could not load existing history: Disk read error")
+        
     # Test the load_history functionality
     try:
         calculator.load_history()
@@ -178,3 +219,8 @@ def test_calculator_repl_help(mock_print, mock_input):
 def test_calculator_repl_addition(mock_print, mock_input):
     calculator_repl()
     mock_print.assert_any_call("\nResult: 5")
+
+
+
+
+
