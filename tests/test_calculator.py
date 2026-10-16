@@ -44,7 +44,7 @@ def test_calculator_initialization(calculator):
 
 @patch('app.calculator.Calculator.load_history')
 @patch('app.calculator.logging.warning')
-def test_calculator_init_default_config_and_load_history_warning(mock_warning, mock_load_history):
+def test_calculator_init_default_config_and_load_history_warning_once(mock_warning, mock_load_history):
     mock_load_history.side_effect = Exception("Disk read error")
     
     with patch.object(CalculatorConfig, 'log_dir', new_callable=PropertyMock) as mock_log_dir, \
@@ -222,6 +222,27 @@ def test_clear_history(calculator):
     assert calculator.undo_stack == []
     assert calculator.redo_stack == []
 
+# Test for Empty History and to_csv Exception
+
+@patch('app.calculator.pd.DataFrame')
+def test_save_history_empty(mock_dataframe, calculator):
+    calculator.history = []
+    calculator.savehistory ()
+
+    mock_dataframe.assert_called_with(columns=['operation', 'operand1', 'operand2', 'result', 'timestamp'])
+    mock_dataframe.return_value.to_csv.assert_called_once()
+
+@patch('app.calculator.pd.DataFrame.to_csv')
+def test_save_history_exception(mock_to_csv, calculator):
+    mock_to_csv.side_effect = Exception("Disk full")
+    
+    operation = OperationFactory.create_operation('add')
+    calculator.set_operation(operation)
+    calculator.perform_operation(2, 3)
+    
+    with pytest.raises(OperationError, match="Failed to save history: Disk full"):
+        calculator.save_history()
+
 # Max History Size Enforcement
 
 def test_max_history_size(calculator):
@@ -278,8 +299,8 @@ def test_observer_notification(calculator):
     calculator.perform_operation(2, 3)
     observer.update.assert_called_once()
 
-    assert mock_observer.update.call_count == 1
-    called_calc = mock_observers.update.call_args[0][0]
+    assert observer.update.call_count == 1
+    called_calc = observer.update.call_args[0][0]
     assert called_calc.operand1 == Decimal ('2')
     assert called_calc.operand2 == Decimal ('3')
     assert called_calc.result == Decimal ('5')
