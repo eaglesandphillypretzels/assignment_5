@@ -213,12 +213,27 @@ def test_get_history_dataframe(calculator):
 
 def test_clear_history(calculator):
     operation = OperationFactory.create_operation('add')
+    
     calculator.set_operation(operation)
     calculator.perform_operation(2, 3)
     calculator.clear_history()
+    
     assert calculator.history == []
     assert calculator.undo_stack == []
     assert calculator.redo_stack == []
+
+# Max History Size Enforcement
+
+def test_max_history_size(calculator):
+    calculator.config.max_history_size = 2
+    operation = OperationFactory.create_operation('add')
+    calculator.set_operation(operation)
+    calculator.perform_operation(1, 1)
+    calculator.perform_operation(2, 2)
+    calculator.perform_operation(3, 3)  # This should trigger removal of the oldest entry
+    
+    assert len(calculator.history) == 2
+    assert calculator.history[0].operand1 == Decimal('2')  # The first entry should be removed
 
 # Test REPL Commands (using patches for input/output handling)
 
