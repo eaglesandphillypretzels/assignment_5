@@ -185,6 +185,30 @@ def test_calculator_init_default_config_and_load_history_warning(mock_warning, m
     except OperationError:
         pytest.fail("Loading history failed due to OperationError")
 
+# Test for load_history.exists, empty DataFrame, and read_csv failure 
+@patch('app.calculator.logging.info')
+def test_load_history_file_not_found(mock_logging_info, calculator):
+    calculator.config.history_file.exists = Mock(return_value=False)
+    calculator.load_history()
+    mock_logging_info.assert_called_with("No history file found - starting with empty history")
+
+@patch('app.calculator.pd.read_csv')
+@patch('app.calculator.logging.info')
+def test_load_history_empty_dataframe(mock_logging_info, mock_read_csv, calculator):
+    calculator.config.history_file.exists = Mock(return_value=True)
+    mock_read_csv.return_value = pd.DataFrame() # Empty dataframe
+    
+    calculator.load_history()
+    mock_logging_info.assert_called_with("Loaded empty history file")
+
+@patch('app.calculator.pd.read_csv')
+def test_load_history_exception(mock_read_csv, calculator):
+    calculator.config.history_file.exists = Mock(return_value=True)
+    mock_read_csv.side_effect = Exception("Corrupted CSV")
+    
+    with pytest.raises(OperationError, match="Failed to load history: Corrupted CSV"):
+        calculator.load_history()
+
 # Exception Handling in Logging Setup
 
 @patch('builtins.print')
@@ -304,8 +328,3 @@ def test_observer_notification(calculator):
     assert called_calc.operand1 == Decimal ('2')
     assert called_calc.operand2 == Decimal ('3')
     assert called_calc.result == Decimal ('5')
-
-
-
-
-
