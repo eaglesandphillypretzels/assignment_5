@@ -185,6 +185,17 @@ def test_calculator_init_default_config_and_load_history_warning(mock_warning, m
     except OperationError:
         pytest.fail("Loading history failed due to OperationError")
 
+# Exception Handling in Logging Setup
+
+@patch('builtins.print')
+@patch('app.calculator.os.makedirs')
+def test_setup_logging_exception(mock_makedirs, mock_print):
+    def test_setup_logging_exception():
+        # Simulate an exception when creating directories
+        mock_makedirs.side_effect = Exception("Permission denied")
+        with pytest.raises(Exception, match="Permission denied"):
+            calculator.setup_logging()
+
 # Test get_history_dataframe method for retrieving history in DataFrame format
 
 def test_get_history_dataframe(calculator):
@@ -231,6 +242,21 @@ def test_calculator_repl_help(mock_print, mock_input):
 def test_calculator_repl_addition(mock_print, mock_input):
     calculator_repl()
     mock_print.assert_any_call("\nResult: 5")
+
+# Test Observer Notifications
+def test_observer_notification(calculator):
+    observer = Mock()
+    calculator.add_observer(observer)
+    operation = OperationFactory.create_operation('add')
+    calculator.set_operation(operation)
+    calculator.perform_operation(2, 3)
+    observer.update.assert_called_once()
+
+    assert mock_observer.update.call_count == 1
+    called_calc = mock_observers.update.call_args[0][0]
+    assert called_calc.operand1 == Decimal ('2')
+    assert called_calc.operand2 == Decimal ('3')
+    assert called_calc.result == Decimal ('5')
 
 
 
