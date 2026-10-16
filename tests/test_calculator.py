@@ -291,6 +291,18 @@ def test_max_history_size_warning(mock_warning, calculator):
     
     mock_warning.assert_called_with("Max history size exceeded. Oldest entry removed.")
 
+# Test Show History Function
+def test_show_history(calculator):
+    operation = OperationFactory.create_operation('add')
+    calculator.set_operation(operation)
+    calculator.perform_operation(2, 3)
+    
+    history_str = calculator.show_history()
+    
+    assert len(history_str) == 1
+    # Note: Adjust "Addition" if your OperationFactory.__str__ returns something else like "add"
+    assert "Addition(2, 3) = 5" in history_str[0] 
+    
 # Test REPL Commands (using patches for input/output handling)
 
 @patch('builtins.input', side_effect=['exit'])
