@@ -85,7 +85,8 @@ def test_logging_setup(logging_info_mock):
 @patch('app.calculator.os.makedirs')
 def test_setup_logging_exception(mock_makedirs, mock_print):
     """Covers exception handling in _setup_logging"""
-    mock_makedirs.side_effect = PermissionError("Access denied")
+    # The list means: 1st call returns None (success), 2nd call raises Error
+    mock_makedirs.side_effect = [None, PermissionError("Access denied")]
     
     with patch.object(CalculatorConfig, 'log_dir', new_callable=PropertyMock) as mock_log_dir, \
          patch.object(CalculatorConfig, 'log_file', new_callable=PropertyMock) as mock_log_file:
@@ -94,8 +95,8 @@ def test_setup_logging_exception(mock_makedirs, mock_print):
         
         with pytest.raises(PermissionError):
             Calculator(CalculatorConfig())
-        
-        assert mock_print.call_count >= 1
+            
+        mock_print.assert_called_with("Error setting up logging: Access denied")
 
 # Adding and Removing Observers Test
 
@@ -304,7 +305,7 @@ def test_load_history_exception(mock_exists, mock_read_csv, calculator):
     
     with pytest.raises(OperationError, match="Failed to load history: Corrupted CSV"):
         calculator.load_history()
-        
+
 # Show History Function Test
 
 def test_show_history(calculator):
