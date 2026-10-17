@@ -227,8 +227,8 @@ def test_save_history_exception(mock_logging_error, mock_to_csv, calculator):
 # Test History Management (Load)
 
 @patch('app.calculator.pd.read_csv')
-def test_load_history(mock_read_csv, calculator):
-    calculator.config.history_file.exists = Mock(return_value=True)
+@patch('app.calculator.Path.exists', return_value=True)
+def test_load_history(mock_exists, mock_read_csv, calculator):
     mock_read_csv.return_value = pd.DataFrame({
         'operation': ['Addition'],
         'operand1': ['2'],
@@ -240,10 +240,10 @@ def test_load_history(mock_read_csv, calculator):
     calculator.load_history()
 
     assert len(calculator.history) == 1
-    assert calculator.history [0].operation == "Addition"
-    assert calculator.history [0].operand1 == Decimal("2")
-    assert calculator.history [0].operand2 == Decimal("3")
-    assert calculator.history [0].result == Decimal("5")
+    assert calculator.history[0].operation == "Addition"
+    assert calculator.history[0].operand1 == Decimal("2")
+    assert calculator.history[0].operand2 == Decimal("3")
+    assert calculator.history[0].result == Decimal("5")
     
 @patch('app.calculator.logging.info')
 def test_load_history_file_not_found(mock_logging_info, calculator):
