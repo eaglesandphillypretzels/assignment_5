@@ -62,7 +62,7 @@ def test_calculator_init_default_config_and_load_history_warning_once(mock_warni
         assert isinstance(calc.config, CalculatorConfig)
         mock_warning.assert_called_with("Could not load existing history: Disk read error")
 
-# Test Logging Setup
+# Logging Setup Test
 
 @patch('app.calculator.logging.info')
 def test_logging_setup(logging_info_mock):
@@ -74,6 +74,22 @@ def test_logging_setup(logging_info_mock):
         # Instantiate calculator to trigger logging
         calculator = Calculator(CalculatorConfig())
         logging_info_mock.assert_any_call("Calculator initialized with configuration")
+
+@patch('builtins.print')
+@patch('app.calculator.os.makedirs')
+def test_setup_logging_exception(mock_makedirs, mock_print):
+    """Covers exception handling in _setup_logging"""
+    mock_makedirs.side_effect = PermissionError("Access denied")
+    
+    with patch.object(CalculatorConfig, 'log_dir', new_callable=PropertyMock) as mock_log_dir, \
+         patch.object(CalculatorConfig, 'log_file', new_callable=PropertyMock) as mock_log_file:
+        mock_log_dir.return_value = Path('/tmp/logs')
+        mock_log_file.return_value = Path('/tmp/logs/calculator.log')
+        
+        with pytest.raises(PermissionError):
+            Calculator(CalculatorConfig())
+            
+        mock_print.assert_called_with("Error setting up logging: Access denied")
 
 # Test Adding and Removing Observers
 
@@ -128,6 +144,14 @@ def test_redo(calculator):
     calculator.undo()
     calculator.redo()
     assert len(calculator.history) == 1
+
+def test_undo_empty_stack(calculator):
+    result = calculator.undo()
+    assert result is False
+
+def test_redo_empty_stack(calculator):
+    result = calculator.redo()
+    assert result is False
 
 # Test History Management
 
@@ -185,7 +209,8 @@ def test_calculator_init_default_config_and_load_history_warning(mock_warning, m
     except OperationError:
         pytest.fail("Loading history failed due to OperationError")
 
-# Test for load_history.exists, empty DataFrame, and read_csv failure 
+# Test for load_history.exists, empty DataFrame, and read_csv failure
+
 @patch('app.calculator.logging.info')
 def test_load_history_file_not_found(mock_logging_info, calculator):
     calculator.config.history_file.exists = Mock(return_value=False)
@@ -302,7 +327,7 @@ def test_show_history(calculator):
     assert len(history_str) == 1
     # Note: Adjust "Addition" if your OperationFactory.__str__ returns something else like "add"
     assert "Addition(2, 3) = 5" in history_str[0] 
-    
+
 # Test REPL Commands (using patches for input/output handling)
 
 @patch('builtins.input', side_effect=['exit'])
