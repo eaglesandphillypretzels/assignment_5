@@ -85,7 +85,6 @@ def test_logging_setup(logging_info_mock):
 @patch('app.calculator.os.makedirs')
 def test_setup_logging_exception(mock_makedirs, mock_print):
     """Covers exception handling in _setup_logging"""
-    # The list means: 1st call returns None (success), 2nd call raises Error
     mock_makedirs.side_effect = [None, PermissionError("Access denied")]
     
     with patch.object(CalculatorConfig, 'log_dir', new_callable=PropertyMock) as mock_log_dir, \
@@ -246,18 +245,24 @@ def test_load_history(mock_exists, mock_read_csv, calculator):
     assert calculator.history[0].operand2 == Decimal("3")
     assert calculator.history[0].result == Decimal("5")
 
-patch('app.calculator.Path.exists', return_value=False)
+@patch('app.calculator.Path.exists', return_value=False)
 @patch('app.calculator.logging.info')
-def test_load_history_file_not_found(mock_logging_info, mock_exists, calculator):
+def test_load_history_file_not_found_with_exists_patch(mock_logging_info, mock_exists, calculator):
     calculator.load_history()
     mock_logging_info.assert_called_with("No history file found - starting with empty history")
 
 @patch('app.calculator.logging.info')
 def test_load_history_file_not_found(mock_logging_info, calculator):
-    calculator.config.history_file.exists = Mock(return_value=False)
-    calculator.load_history()
-    mock_logging_info.assert_called_with("No history file found - starting with empty history")
+    mock_path = Mock()
+    mock_path.exists.return_value = False
 
+    with patch.object(CalculatorConfig, 'history_file', new_callable=PropertyMock) as mock_hist_file:
+        mock_hist_file.return_value = mock_path
+
+        calculator.load_history()
+
+    mock_logging_info.assert_called_with("No history file found - starting with empty history")
+    
 @patch('app.calculator.pd.read_csv')
 @patch('app.calculator.logging.info')
 def test_load_history_empty_dataframe(mock_logging_info, mock_read_csv, calculator):
