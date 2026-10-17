@@ -271,9 +271,21 @@ def test_get_history_dataframe(calculator):
     assert df.iloc[0]['operation'] == 'Addition'
     assert df.iloc[0]['operand1'] == '2'
     assert df.iloc[0]['operand2'] == '3'
-    assert df.iloc[0]['result'] == '5'     
+    assert df.iloc[0]['result'] == '5'  
+
+# Show History Function Test
+
+def test_show_history(calculator):
+    operation = OperationFactory.create_operation('add')
+    calculator.set_operation(operation)
+    calculator.perform_operation(2, 3)
+    
+    history_str = calculator.show_history()
+
+    assert len(history_str) == 1
+    assert "Addition (2, 3) = 5" in history_str[0]
             
-# Test Clearing History
+# Clearing History Test
 
 def test_clear_history(calculator):
     operation = OperationFactory.create_operation('add')
