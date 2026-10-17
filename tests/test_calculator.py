@@ -64,7 +64,7 @@ def test_calculator_init_default_config_and_load_history_warning_once(mock_warni
             
             calc = Calculator(config=config)
             
-            # Verify the warning was logged due to load_history failure
+            # Verify the warning was logged
             mock_warning.assert_called_with("Could not load existing history: Disk read error")
             assert isinstance(calc.config, CalculatorConfig)
 

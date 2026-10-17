@@ -515,3 +515,43 @@
 2026-10-17 16:08:16,445 - INFO - Calculation performed: Addition (2, 3) = 5
 2026-10-17 16:08:16,447 - INFO - History saved successfully to /home/joyadwoa/projects/assignment5/test_history/test_history.csv
 2026-10-17 16:08:16,513 - INFO - History auto-saved
+2026-10-17 16:14:08,706 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-10-17 16:14:08,713 - INFO - Loaded 26 calculations from history
+2026-10-17 16:14:08,713 - INFO - Calculator initialized with configuration
+2026-10-17 16:14:08,713 - INFO - Added observer: LoggingObserver
+2026-10-17 16:14:08,713 - INFO - Added observer: AutoSaveObserver
+2026-10-17 16:14:08,719 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-10-17 16:14:08,726 - INFO - Loaded 26 calculations from history
+2026-10-17 16:14:08,727 - INFO - Calculator initialized with configuration
+2026-10-17 16:14:08,727 - INFO - Added observer: LoggingObserver
+2026-10-17 16:14:08,727 - INFO - Added observer: AutoSaveObserver
+2026-10-17 16:14:08,731 - INFO - History saved successfully to /home/joyadwoa/projects/assignment5/test_history/test_history.csv
+2026-10-17 16:14:08,735 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-10-17 16:14:08,745 - INFO - Loaded 26 calculations from history
+2026-10-17 16:14:08,745 - INFO - Calculator initialized with configuration
+2026-10-17 16:14:08,745 - INFO - Added observer: LoggingObserver
+2026-10-17 16:14:08,745 - INFO - Added observer: AutoSaveObserver
+2026-10-17 16:14:08,745 - INFO - Set operation: Addition
+2026-10-17 16:14:08,746 - INFO - Calculation performed: Addition (2, 3) = 5
+2026-10-17 16:14:08,748 - INFO - History saved successfully to /home/joyadwoa/projects/assignment5/test_history/test_history.csv
+2026-10-17 16:14:08,831 - INFO - History auto-saved
+2026-10-17 16:15:41,673 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-10-17 16:15:41,689 - INFO - Loaded 27 calculations from history
+2026-10-17 16:15:41,689 - INFO - Calculator initialized with configuration
+2026-10-17 16:15:41,689 - INFO - Added observer: LoggingObserver
+2026-10-17 16:15:41,689 - INFO - Added observer: AutoSaveObserver
+2026-10-17 16:15:41,697 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-10-17 16:15:41,709 - INFO - Loaded 27 calculations from history
+2026-10-17 16:15:41,710 - INFO - Calculator initialized with configuration
+2026-10-17 16:15:41,710 - INFO - Added observer: LoggingObserver
+2026-10-17 16:15:41,710 - INFO - Added observer: AutoSaveObserver
+2026-10-17 16:15:41,718 - INFO - History saved successfully to /home/joyadwoa/projects/assignment5/test_history/test_history.csv
+2026-10-17 16:15:41,730 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-10-17 16:15:41,741 - INFO - Loaded 27 calculations from history
+2026-10-17 16:15:41,742 - INFO - Calculator initialized with configuration
+2026-10-17 16:15:41,742 - INFO - Added observer: LoggingObserver
+2026-10-17 16:15:41,742 - INFO - Added observer: AutoSaveObserver
+2026-10-17 16:15:41,743 - INFO - Set operation: Addition
+2026-10-17 16:15:41,743 - INFO - Calculation performed: Addition (2, 3) = 5
+2026-10-17 16:15:41,747 - INFO - History saved successfully to /home/joyadwoa/projects/assignment5/test_history/test_history.csv
+2026-10-17 16:15:41,853 - INFO - History auto-saved
