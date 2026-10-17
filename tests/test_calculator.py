@@ -317,7 +317,6 @@ def test_max_history_size_warning(mock_warning, calculator):
     
     mock_warning.assert_called_with("Max history size exceeded. Oldest entry removed.")
 
-
 # REPL Commands Test (using patches for input/output handling)
 
 @patch('builtins.input', side_effect=['exit'])
