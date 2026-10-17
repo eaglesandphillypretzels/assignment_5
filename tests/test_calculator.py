@@ -91,7 +91,7 @@ def test_setup_logging_exception(mock_makedirs, mock_print):
             
         mock_print.assert_called_with("Error setting up logging: Access denied")
 
-# Test Adding and Removing Observers
+# Adding and Removing Observers Test
 
 def test_add_observer(calculator):
     observer = LoggingObserver()
@@ -104,6 +104,19 @@ def test_remove_observer(calculator):
     calculator.remove_observer(observer)
     assert observer not in calculator.observers
 
+def test_observer_notification(calculator):
+    observer = Mock()
+    calculator.add_observer(observer)
+    operation = OperationFactory.create_operation('add')
+    calculator.set_operation(operation)
+    calculator.perform_operation(2, 3)
+    
+    assert observer.update.call_count == 1
+    called_calc = observer.update.call_args[0][0]
+    assert called_calc.operand1 == Decimal('2')
+    assert called_calc.operand2 == Decimal('3')
+    assert called_calc.result == Decimal('5')
+    
 # Test Setting Operations
 
 def test_set_operation(calculator):
