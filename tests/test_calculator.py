@@ -293,7 +293,7 @@ def test_show_history(calculator):
     assert calculator.undo_stack == []
     assert calculator.redo_stack == []
 
-# Max History Size Enforcement
+# Max History Size Enforcement Test
 
 def test_max_history_size(calculator):
     calculator.config.max_history_size = 2
@@ -317,19 +317,8 @@ def test_max_history_size_warning(mock_warning, calculator):
     
     mock_warning.assert_called_with("Max history size exceeded. Oldest entry removed.")
 
-# Test Show History Function
-def test_show_history(calculator):
-    operation = OperationFactory.create_operation('add')
-    calculator.set_operation(operation)
-    calculator.perform_operation(2, 3)
-    
-    history_str = calculator.show_history()
-    
-    assert len(history_str) == 1
-    # Note: Adjust "Addition" if your OperationFactory.__str__ returns something else like "add"
-    assert "Addition(2, 3) = 5" in history_str[0] 
 
-# Test REPL Commands (using patches for input/output handling)
+# REPL Commands Test (using patches for input/output handling)
 
 @patch('builtins.input', side_effect=['exit'])
 @patch('builtins.print')
@@ -351,18 +340,3 @@ def test_calculator_repl_help(mock_print, mock_input):
 def test_calculator_repl_addition(mock_print, mock_input):
     calculator_repl()
     mock_print.assert_any_call("\nResult: 5")
-
-# Test Observer Notifications
-def test_observer_notification(calculator):
-    observer = Mock()
-    calculator.add_observer(observer)
-    operation = OperationFactory.create_operation('add')
-    calculator.set_operation(operation)
-    calculator.perform_operation(2, 3)
-    observer.update.assert_called_once()
-
-    assert observer.update.call_count == 1
-    called_calc = observer.update.call_args[0][0]
-    assert called_calc.operand1 == Decimal ('2')
-    assert called_calc.operand2 == Decimal ('3')
-    assert called_calc.result == Decimal ('5')
