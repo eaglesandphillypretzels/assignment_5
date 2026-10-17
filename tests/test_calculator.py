@@ -47,6 +47,10 @@ def test_calculator_initialization(calculator):
 def test_calculator_init_default_config_and_load_history_warning_once(mock_warning, mock_load_history):
     mock_load_history.side_effect = Exception("Disk read error")
     
+    with TemporaryDirectory() as temp_dir:
+        temp_path = Path(temp_dir)
+        config = CalculatorConfig(base_dir=temp_path)
+    
     with patch.object(CalculatorConfig, 'log_dir', new_callable=PropertyMock) as mock_log_dir, \
          patch.object(CalculatorConfig, 'log_file', new_callable=PropertyMock) as mock_log_file, \
          patch.object(CalculatorConfig, 'history_dir', new_callable=PropertyMock) as mock_history_dir, \
@@ -57,8 +61,9 @@ def test_calculator_init_default_config_and_load_history_warning_once(mock_warni
         mock_history_dir.return_value = Path("/tmp/test_history")
         mock_history_file.return_value = Path("/tmp/test_history/history.csv")
         
-        calc = Calculator() # Instantiates with default config
-        
+        calc = Calculator(config=config)
+
+        # Verifies the warning was logged due to load_history failure
         assert isinstance(calc.config, CalculatorConfig)
         mock_warning.assert_called_with("Could not load existing history: Disk read error")
 
@@ -141,18 +146,20 @@ def test_perform_operation_operation_error(calculator):
     with pytest.raises(OperationError, match="No operation set"):
         calculator.perform_operation(2, 3)
 
-"""Coverage for testing unexpected logging errors"""
 @patch('app.calculator.logging.error')
 def test_perform_operation_generic_exception(mock_logging_error, calculator):
-    # Covers the generic except Exception block in perform_operation
-    """"Arrange"""
     mock_operation = Mock()
-    mock_operation.execute.side_effect = Exception("Unexpected hardware failure")
+
+    """Arrange"""
+    mock_operation.execute.side_effect = RuntimeError("Unexpected hardware failure")
     calculator.set_operation(mock_operation)
-    """"Act"""
+
+    """Assert"""
     with pytest.raises(OperationError, match="Operation failed: Unexpected hardware failure"):
         calculator.perform_operation(2, 3)
-    """"Assert"""
+
+    """Act"""
+    # Verify the generic exception handler logged the error
     mock_logging_error.assert_called_with("Operation failed: Unexpected hardware failure")
 
 # Test Undo/Redo Functionality
@@ -190,6 +197,7 @@ def test_save_history(mock_to_csv, calculator):
     calculator.save_history()
     mock_to_csv.assert_called_once()
 
+
 @patch('app.calculator.pd.DataFrame')
 @patch('app.calculator.logging.info')
 def test_save_history_empty(mock_logging_info, mock_dataframe, calculator):
@@ -203,11 +211,12 @@ def test_save_history_empty(mock_logging_info, mock_dataframe, calculator):
 @patch('app.calculator.pd.DataFrame.to_csv')
 @patch('app.calculator.logging.error')
 def test_save_history_exception(mock_logging_error, mock_to_csv, calculator):
-    mock_to_csv.side_effect = Exception("Disk full")
     
     operation = OperationFactory.create_operation('add')
     calculator.set_operation(operation)
     calculator.perform_operation(2, 3)
+
+    mock_to_csv.side_effect = IOError("Disk full")
     
     with pytest.raises(OperationError, match="Failed to save history: Disk full"):
         calculator.save_history()
@@ -284,7 +293,6 @@ def test_show_history(calculator):
     assert "Addition(2, 3) = 5" in history_str[0] 
             
 # Clear History Function Test
-
 def test_clear_history(calculator):
     operation = OperationFactory.create_operation('add')
     calculator.set_operation(operation)
