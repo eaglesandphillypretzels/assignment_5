@@ -260,18 +260,7 @@ def test_load_history_exception(mock_read_csv, calculator):
     with pytest.raises(OperationError, match="Failed to load history: Corrupted CSV"):
         calculator.load_history()
 
-# Exception Handling in Logging Setup
-
-@patch('builtins.print')
-@patch('app.calculator.os.makedirs')
-def test_setup_logging_exception(mock_makedirs, mock_print):
-    def test_setup_logging_exception():
-        # Simulate an exception when creating directories
-        mock_makedirs.side_effect = Exception("Permission denied")
-        with pytest.raises(Exception, match="Permission denied"):
-            calculator.setup_logging()
-
-# Test get_history_dataframe method for retrieving history in DataFrame format
+# DataFrame History Retrieval Test
 
 def test_get_history_dataframe(calculator):
     operation = OperationFactory.create_operation('add')
