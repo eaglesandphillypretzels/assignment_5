@@ -228,10 +228,15 @@ def test_load_history(mock_read_csv, calculator):
         'result': ['5'],
         'timestamp': [datetime.datetime.now().isoformat()]
     })
+
+    calculator.load_history()
+
+    assert len(calculator.history) == 1
+    assert calculator.history [0].operation == "Addition"
+    assert calculator.history [0].operand1 == Decimal("2")
+    assert calculator.history [0].operand2 == Decimal("3")
+    assert calculator.history [0].result == Decimal("5")
     
-
-# Test for load_history.exists, empty DataFrame, and read_csv failure
-
 @patch('app.calculator.logging.info')
 def test_load_history_file_not_found(mock_logging_info, calculator):
     calculator.config.history_file.exists = Mock(return_value=False)
