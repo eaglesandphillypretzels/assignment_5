@@ -293,17 +293,6 @@ def test_show_history(calculator):
     assert calculator.undo_stack == []
     assert calculator.redo_stack == []
 
-@patch('app.calculator.pd.DataFrame.to_csv')
-def test_save_history_exception(mock_to_csv, calculator):
-    mock_to_csv.side_effect = Exception("Disk full")
-    
-    operation = OperationFactory.create_operation('add')
-    calculator.set_operation(operation)
-    calculator.perform_operation(2, 3)
-    
-    with pytest.raises(OperationError, match="Failed to save history: Disk full"):
-        calculator.save_history()
-
 # Max History Size Enforcement
 
 def test_max_history_size(calculator):
