@@ -141,8 +141,7 @@ def test_perform_operation_operation_error(calculator):
     with pytest.raises(OperationError, match="No operation set"):
         calculator.perform_operation(2, 3)
 
-# Coverage for unexpected fatal error crashes
-
+"""Coverage for testing unexpected logging errors"""
 @patch('app.calculator.logging.error')
 def test_perform_operation_generic_exception(mock_logging_error, calculator):
     # Covers the generic except Exception block in perform_operation
