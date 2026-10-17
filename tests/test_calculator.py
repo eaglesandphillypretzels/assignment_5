@@ -116,7 +116,7 @@ def test_observer_notification(calculator):
     assert called_calc.operand1 == Decimal('2')
     assert called_calc.operand2 == Decimal('3')
     assert called_calc.result == Decimal('5')
-    
+
 # Test Setting Operations
 
 def test_set_operation(calculator):
@@ -140,6 +140,21 @@ def test_perform_operation_validation_error(calculator):
 def test_perform_operation_operation_error(calculator):
     with pytest.raises(OperationError, match="No operation set"):
         calculator.perform_operation(2, 3)
+
+# Coverage for unexpected fatal error crashes
+
+@patch('app.calculator.logging.error')
+def test_perform_operation_generic_exception(mock_logging_error, calculator):
+    # Covers the generic except Exception block in perform_operation
+    """"Arrange"""
+    mock_operation = Mock()
+    mock_operation.execute.side_effect = Exception("Unexpected hardware failure")
+    calculator.set_operation(mock_operation)
+    """"Act"""
+    with pytest.raises(OperationError, match="Operation failed: Unexpected hardware failure"):
+        calculator.perform_operation(2, 3)
+    """"Assert"""
+    mock_logging_error.assert_called_with("Operation failed: Unexpected hardware failure")
 
 # Test Undo/Redo Functionality
 
