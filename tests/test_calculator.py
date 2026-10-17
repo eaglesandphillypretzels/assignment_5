@@ -251,7 +251,6 @@ def test_load_history_file_not_found(mock_logging_info, mock_exists, calculator)
     calculator.load_history()
     mock_logging_info.assert_called_with("No history file found - starting with empty history")
 
-
 @patch('app.calculator.logging.info')
 def test_load_history_file_not_found(mock_logging_info, calculator):
     calculator.config.history_file.exists = Mock(return_value=False)
@@ -275,6 +274,7 @@ def test_load_history_exception(mock_read_csv, calculator):
     with pytest.raises(OperationError, match="Failed to load history: Corrupted CSV"):
         calculator.load_history()
 
+
 # DataFrame History Retrieval Test
 
 def test_get_history_dataframe(calculator):
@@ -287,6 +287,16 @@ def test_get_history_dataframe(calculator):
     assert df.iloc[0]['operand1'] == '2'
     assert df.iloc[0]['operand2'] == '3'
     assert df.iloc[0]['result'] == '5'  
+
+@patch('app.calculator.pd.read_csv')
+@patch('app.calculator.Path.exists', return_value=True)
+@patch('app.calculator.logging.info')
+def test_load_history_empty_dataframe(mock_logging_info, mock_exists, mock_read_csv, calculator):
+    mock_read_csv.return_value = pd.DataFrame()  # Empty dataframe
+    
+    calculator.load_history()
+    mock_logging_info.assert_called_with("Loaded empty history file")
+
 
 # Show History Function Test
 
