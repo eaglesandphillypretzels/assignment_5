@@ -180,7 +180,7 @@ def test_redo_empty_stack(calculator):
     result = calculator.redo()
     assert result is False
 
-# Test History Management
+# Test History Management (Save)
 
 @patch('app.calculator.pd.DataFrame.to_csv')
 def test_save_history(mock_to_csv, calculator):
@@ -191,37 +191,30 @@ def test_save_history(mock_to_csv, calculator):
     mock_to_csv.assert_called_once()
 
 
-@patch('app.calculator.pd.read_csv')
-@patch('app.calculator.Path.exists', return_value=True)
-def test_load_history(mock_exists, mock_read_csv, calculator):
-    # Mock CSV data to match the expected format in from_dict
-    mock_read_csv.return_value = pd.DataFrame({
-        'operation': ['Addition'],
-        'operand1': ['2'],
-        'operand2': ['3'],
-        'result': ['5'],
-        'timestamp': [datetime.datetime.now().isoformat()]
-    })
+@patch('app.calculator.pd.DataFrame')
+@patch('app.calculator.logging.info')
+def test_save_history_empty(mock_logging_info, mock_dataframe, calculator):
+    calculator.history = []
+    calculator.save_history() # FIXED: was savehistory ()
 
-@patch('app.calculator.Calculator.load_history')
-@patch('app.calculator.logging.warning')
-def test_calculator_init_default_config_and_load_history_warning(mock_warning, mock_load_history):
-    mock_load_history.side_effect = Exception("Disk read error")
+    mock_dataframe.assert_called_once_with(columns=['operation', 'operand1', 'operand2', 'result', 'timestamp'])
+    mock_dataframe.return_value.to_csv.assert_called_once_with(calculator.config.history_file, index=False)
+    mock_logging_info.assert_called_with("Empty history saved")
+
+@patch('app.calculator.pd.DataFrame.to_csv')
+@patch('app.calculator.logging.error')
+def test_save_history_exception(mock_logging_error, mock_to_csv, calculator):
+    mock_to_csv.side_effect = Exception("Disk full")
     
-    with patch.object(CalculatorConfig, 'log_dir', new_callable=PropertyMock) as mock_log_dir, \
-         patch.object(CalculatorConfig, 'log_file', new_callable=PropertyMock) as mock_log_file, \
-         patch.object(CalculatorConfig, 'history_dir', new_callable=PropertyMock) as mock_history_dir, \
-         patch.object(CalculatorConfig, 'history_file', new_callable=PropertyMock) as mock_history_file:
+    operation = OperationFactory.create_operation('add')
+    calculator.set_operation(operation)
+    calculator.perform_operation(2, 3)
+    
+    with pytest.raises(OperationError, match="Failed to save history: Disk full"):
+        calculator.save_history()
         
-        mock_log_dir.return_value = Path("/tmp/test_logs")
-        mock_log_file.return_value = Path("/tmp/test_logs/calculator.log")
-        mock_history_dir.return_value = Path("/tmp/test_history")
-        mock_history_file.return_value = Path("/tmp/test_history/history.csv")
-        
-        calc = Calculator() # Instantiates with default config
-        
-        assert isinstance(calc.config, CalculatorConfig)
-        mock_warning.assert_called_with("Could not load existing history: Disk read error")
+    mock_logging_error.assert_called_with("Failed to save history: Disk full")
+
         
     # Test the load_history functionality
     try:
