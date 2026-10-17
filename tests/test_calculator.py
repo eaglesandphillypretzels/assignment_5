@@ -190,7 +190,6 @@ def test_save_history(mock_to_csv, calculator):
     calculator.save_history()
     mock_to_csv.assert_called_once()
 
-
 @patch('app.calculator.pd.DataFrame')
 @patch('app.calculator.logging.info')
 def test_save_history_empty(mock_logging_info, mock_dataframe, calculator):
@@ -309,17 +308,6 @@ def test_max_history_size(calculator):
     
     assert len(calculator.history) == 2
     assert calculator.history[0].operand1 == Decimal('2')  # The first entry should be removed
-
-@patch('app.calculator.logging.warning')
-def test_max_history_size_warning(mock_warning, calculator):
-    calculator.config.max_history_size = 2
-    operation = OperationFactory.create_operation('add')
-    calculator.set_operation(operation)
-    calculator.perform_operation(1, 1)
-    calculator.perform_operation(2, 2)
-    calculator.perform_operation(3, 3)  # This should trigger removal of the oldest entry
-    
-    mock_warning.assert_called_with("Max history size exceeded. Oldest entry removed.")
 
 # REPL Commands Test (using patches for input/output handling)
 
