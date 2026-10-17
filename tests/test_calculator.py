@@ -45,29 +45,28 @@ def test_calculator_initialization(calculator):
 @patch('app.calculator.Calculator.load_history')
 @patch('app.calculator.logging.warning')
 def test_calculator_init_default_config_and_load_history_warning_once(mock_warning, mock_load_history):
+    """Covers lines 103-106: Exception handling in __init__"""
     mock_load_history.side_effect = Exception("Disk read error")
     
     with TemporaryDirectory() as temp_dir:
         temp_path = Path(temp_dir)
         config = CalculatorConfig(base_dir=temp_path)
-    
-    with patch.object(CalculatorConfig, 'log_dir', new_callable=PropertyMock) as mock_log_dir, \
-         patch.object(CalculatorConfig, 'log_file', new_callable=PropertyMock) as mock_log_file, \
-         patch.object(CalculatorConfig, 'history_dir', new_callable=PropertyMock) as mock_history_dir, \
-         patch.object(CalculatorConfig, 'history_file', new_callable=PropertyMock) as mock_history_file:
         
-        mock_log_dir.return_value = Path("/tmp/test_logs")
-        mock_log_file.return_value = Path("/tmp/test_logs/calculator.log")
-        mock_history_dir.return_value = Path("/tmp/test_history")
-        mock_history_file.return_value = Path("/tmp/test_history/history.csv")
-        
-        calc = Calculator(config=config)
-
-        # Verifies the warning was logged due to load_history failure
-        assert isinstance(calc.config, CalculatorConfig)
-        mock_warning.assert_called_with("Could not load existing history: Disk read error")
-
-# Logging Setup Test
+        with patch.object(CalculatorConfig, 'log_dir', new_callable=PropertyMock) as mock_log_dir, \
+             patch.object(CalculatorConfig, 'log_file', new_callable=PropertyMock) as mock_log_file, \
+             patch.object(CalculatorConfig, 'history_dir', new_callable=PropertyMock) as mock_history_dir, \
+             patch.object(CalculatorConfig, 'history_file', new_callable=PropertyMock) as mock_history_file:
+            
+            mock_log_dir.return_value = temp_path / "logs"
+            mock_log_file.return_value = temp_path / "logs/calculator.log"
+            mock_history_dir.return_value = temp_path / "history"
+            mock_history_file.return_value = temp_path / "history/calculator_history.csv"
+            
+            calc = Calculator(config=config)
+            
+            # Verify the warning was logged due to load_history failure
+            mock_warning.assert_called_with("Could not load existing history: Disk read error")
+            assert isinstance(calc.config, CalculatorConfig)
 
 @patch('app.calculator.logging.info')
 def test_logging_setup(logging_info_mock):
