@@ -244,7 +244,14 @@ def test_load_history(mock_exists, mock_read_csv, calculator):
     assert calculator.history[0].operand1 == Decimal("2")
     assert calculator.history[0].operand2 == Decimal("3")
     assert calculator.history[0].result == Decimal("5")
-    
+
+patch('app.calculator.Path.exists', return_value=False)
+@patch('app.calculator.logging.info')
+def test_load_history_file_not_found(mock_logging_info, mock_exists, calculator):
+    calculator.load_history()
+    mock_logging_info.assert_called_with("No history file found - starting with empty history")
+
+
 @patch('app.calculator.logging.info')
 def test_load_history_file_not_found(mock_logging_info, calculator):
     calculator.config.history_file.exists = Mock(return_value=False)
