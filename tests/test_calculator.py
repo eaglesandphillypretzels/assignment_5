@@ -297,7 +297,14 @@ def test_load_history_empty_dataframe(mock_logging_info, mock_exists, mock_read_
     calculator.load_history()
     mock_logging_info.assert_called_with("Loaded empty history file")
 
-
+@patch('app.calculator.pd.read_csv')
+@patch('app.calculator.Path.exists', return_value=True)
+def test_load_history_exception(mock_exists, mock_read_csv, calculator):
+    mock_read_csv.side_effect = Exception("Corrupted CSV")
+    
+    with pytest.raises(OperationError, match="Failed to load history: Corrupted CSV"):
+        calculator.load_history()
+        
 # Show History Function Test
 
 def test_show_history(calculator):
