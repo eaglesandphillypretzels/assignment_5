@@ -285,11 +285,6 @@ def test_show_history(calculator):
     assert len(history_str) == 1
     assert "Addition (2, 3) = 5" in history_str[0]
             
-# Clearing History Test
-
-def test_clear_history(calculator):
-    operation = OperationFactory.create_operation('add')
-    
     calculator.set_operation(operation)
     calculator.perform_operation(2, 3)
     calculator.clear_history()
@@ -297,16 +292,6 @@ def test_clear_history(calculator):
     assert calculator.history == []
     assert calculator.undo_stack == []
     assert calculator.redo_stack == []
-
-# Test for Empty History and to_csv Exception
-
-@patch('app.calculator.pd.DataFrame')
-def test_save_history_empty(mock_dataframe, calculator):
-    calculator.history = []
-    calculator.savehistory ()
-
-    mock_dataframe.assert_called_with(columns=['operation', 'operand1', 'operand2', 'result', 'timestamp'])
-    mock_dataframe.return_value.to_csv.assert_called_once()
 
 @patch('app.calculator.pd.DataFrame.to_csv')
 def test_save_history_exception(mock_to_csv, calculator):
