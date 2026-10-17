@@ -195,7 +195,7 @@ def test_save_history(mock_to_csv, calculator):
 @patch('app.calculator.logging.info')
 def test_save_history_empty(mock_logging_info, mock_dataframe, calculator):
     calculator.history = []
-    calculator.save_history() # FIXED: was savehistory ()
+    calculator.save_history() 
 
     mock_dataframe.assert_called_once_with(columns=['operation', 'operand1', 'operand2', 'result', 'timestamp'])
     mock_dataframe.return_value.to_csv.assert_called_once_with(calculator.config.history_file, index=False)
@@ -219,7 +219,6 @@ def test_save_history_exception(mock_logging_error, mock_to_csv, calculator):
 
 @patch('app.calculator.pd.read_csv')
 def test_load_history(mock_read_csv, calculator):
-    # FIXED: Separated from init test
     calculator.config.history_file.exists = Mock(return_value=True)
     mock_read_csv.return_value = pd.DataFrame({
         'operation': ['Addition'],
@@ -283,10 +282,15 @@ def test_show_history(calculator):
     history_str = calculator.show_history()
 
     assert len(history_str) == 1
-    assert "Addition (2, 3) = 5" in history_str[0]
+    assert "Addition(2, 3) = 5" in history_str[0] 
             
+# Clear History Function Test
+
+def test_clear_history(calculator):
+    operation = OperationFactory.create_operation('add')
     calculator.set_operation(operation)
     calculator.perform_operation(2, 3)
+    
     calculator.clear_history()
     
     assert calculator.history == []
