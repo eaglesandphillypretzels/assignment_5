@@ -265,7 +265,7 @@ def test_load_history_file_not_found(mock_logging_info, calculator):
     
 @patch('app.calculator.pd.read_csv')
 @patch('app.calculator.logging.info')
-def test_load_history_empty_dataframe(mock_logging_info, mock_read_csv, calculator):
+def test_load_history_empty_dataframe(mock_logging_info, mock_read_csv, calculator): # type: ignore
     calculator.config.history_file.exists = Mock(return_value=True)
     mock_read_csv.return_value = pd.DataFrame() # Empty dataframe
     
@@ -273,7 +273,7 @@ def test_load_history_empty_dataframe(mock_logging_info, mock_read_csv, calculat
     mock_logging_info.assert_called_with("Loaded empty history file")
 
 @patch('app.calculator.pd.read_csv')
-def test_load_history_exception(mock_read_csv, calculator):
+def test_load_history_exception(mock_read_csv, calculator): # type: ignore
     calculator.config.history_file.exists = Mock(return_value=True)
     mock_read_csv.side_effect = Exception("Corrupted CSV")
     
