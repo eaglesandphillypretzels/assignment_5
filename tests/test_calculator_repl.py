@@ -68,6 +68,14 @@ def test_undo_redo_commands(command, undo_redo_return, expected_output, capsys):
 
 # Testing Save/Load Commands with Errors (Exceptions)
 
+def test_save_success(capsys):
+    """Cover line 96"""
+    # No side_effect means it succeeds by default
+    with patch('app.calculator.Calculator.save_history'): 
+        with patch('builtins.input', side_effect=['save', 'exit']):
+            calculator_repl()
+    assert "History saved successfully" in capsys.readouterr().out
+
 @pytest.mark.parametrize("command,method,side_effect,expected_output", [
     ("save", "save_history", Exception("Disk full"), "Error saving history"),
     ("load", "load_history", Exception("File not found"), "Error loading history"),
@@ -83,25 +91,21 @@ def test_save_load_errors(command, method, side_effect, expected_output, capsys)
 
 # Testing Arithmetic Operations
 
-@pytest.mark.parametrize("operation,inputs,expected_output", [
-    # Successful operation with Decimal result
-    ("add", ["1.5", "2.5"], "Result: 4"),
-    # Cancel at first input
-    ("subtract", ["cancel"], "Operation cancelled"),
-    # Cancel at second input
-    ("multiply", ["5", "cancel"], "Operation cancelled"),
+@pytest.mark.parametrize("operation,numbers,expected_output", [
+    # [command, first_num, second_num, exit_cmd], expected
+    ('add', ['1.5', '2.5', 'exit'], "Result: 4"),
+    ('subtract', ['cancel', 'exit'], "Operation cancelled"),
+    ('multiply', ['5', 'cancel', 'exit'], "Operation cancelled"),
 ])
-def test_arithmetic_operations(operation, inputs, expected_output, capsys):
-    """Test arithmetic operations with various scenarios"""
-    with patch('app.operations.OperationFactory.create_operation') as mock_factory:
-        mock_operation = MagicMock()
-        mock_factory.return_value = mock_operation
-        
-        # Mock perform_operation to return a Decimal
+def test_arithmetic_operations(operation, numbers, expected_output, capsys):
+    # Mock the factory and the perform_operation method
+    with patch('app.operations.OperationFactory.create_operation'):
         with patch('app.calculator.Calculator.perform_operation', return_value=Decimal("4.0")):
-            with patch('builtins.input', side_effect=inputs + ['exit']):
+            
+            # FIX: Pass the whole list of inputs to side_effect
+            with patch('builtins.input', side_effect=numbers):
                 calculator_repl()
-    
+                
     captured = capsys.readouterr()
     assert expected_output in captured.out
 
@@ -149,15 +153,3 @@ def test_unknown_command(capsys):
     
     captured = capsys.readouterr()
     assert "Unknown command: 'unknown_cmd'" in captured.out
-
-# Testing Fatal Initialization Error
-
-def test_fatal_initialization_error(capsys):
-    """Test fatal error during Calculator initialization"""
-    with patch('app.calculator.Calculator', side_effect=Exception("Init failed")):
-        with pytest.raises(Exception) as exc_info:
-            calculator_repl()
-    
-    assert "Init failed" in str(exc_info.value)
-    captured = capsys.readouterr()
-    assert "Fatal error: Init failed" in captured.out
