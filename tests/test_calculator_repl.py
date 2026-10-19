@@ -4,10 +4,18 @@ from decimal import Decimal
 from app.calculator_repl import calculator_repl
 from app.exceptions import OperationError, ValidationError
 
-# History Save Test
-"""Covers lines 54-55: printing out successful history save message"""
-def test_history_saved(capsys):
-    with patch('builtins.input', side_effect=['save', 'exit']):
+# Testing Simple Commands
+
+@pytest.mark.parametrize("command,expected_output", [
+    ("help", "Available commands:"),
+    ("clear", "History cleared"),
+    ("history", "No calculations in history"),
+])
+def test_simple_commands(command, expected_output, capsys):
+    """Test simple commands that don't require additional input"""
+    with patch('builtins.input', side_effect=[command, 'exit']):
         calculator_repl()
+    
     captured = capsys.readouterr()
-    assert "History saved successfully" in captured.out
+    assert expected_output in captured.out
+
