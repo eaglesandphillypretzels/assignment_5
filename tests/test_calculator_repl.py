@@ -121,3 +121,21 @@ def test_operation_exceptions(exception_class, expected_output, capsys):
     
     captured = capsys.readouterr()
     assert expected_output in captured.out
+
+# Testing Keyboard Interrupts, End-of-File (EOF)
+
+def test_keyboard_interrupt(capsys):
+    """Test handling of Ctrl+C"""
+    with patch('builtins.input', side_effect=[KeyboardInterrupt(), 'exit']):
+        calculator_repl()
+    
+    captured = capsys.readouterr()
+    assert "Operation cancelled" in captured.out
+
+def test_eof_error(capsys):
+    """Test handling of Ctrl+D (EOF)"""
+    with patch('builtins.input', side_effect=EOFError()):
+        calculator_repl()
+    
+    captured = capsys.readouterr()
+    assert "Input terminated. Exiting..." in captured.out
