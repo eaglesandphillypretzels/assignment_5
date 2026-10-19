@@ -76,6 +76,13 @@ def test_save_success(capsys):
             calculator_repl()
     assert "History saved successfully" in capsys.readouterr().out
 
+def test_load_success(capsys):
+    """Cover line 105"""
+    with patch('app.calculator.Calculator.load_history'): 
+        with patch('builtins.input', side_effect=['load', 'exit']):
+            calculator_repl()
+    assert "History loaded successfully" in capsys.readouterr().out
+
 @pytest.mark.parametrize("command,method,side_effect,expected_output", [
     ("save", "save_history", Exception("Disk full"), "Error saving history"),
     ("load", "load_history", Exception("File not found"), "Error loading history"),
@@ -103,7 +110,7 @@ def test_arithmetic_operations(operation, numbers, expected_output, capsys):
         with patch('app.calculator.Calculator.perform_operation', return_value=Decimal("4.0")):
             
             # FIX: Pass the whole list of inputs to side_effect
-            with patch('builtins.input', side_effect=numbers):
+            with patch('builtins.input', side_effect=[operation] + numbers):
                 calculator_repl()
                 
     captured = capsys.readouterr()
@@ -153,3 +160,15 @@ def test_unknown_command(capsys):
     
     captured = capsys.readouterr()
     assert "Unknown command: 'unknown_cmd'" in captured.out
+
+# Testing Fatal Initialization Error
+
+def test_fatal_initialization_error(capsys):
+    """Test fatal error during Calculator initialization"""
+    # Patch 'app.calculator_repl.Calculator', not 'app.calculator.Calculator'
+    with patch('app.calculator_repl.Calculator', side_effect=Exception("Init failed")):
+        with pytest.raises(Exception, match="Init failed"):
+            calculator_repl()
+    
+    captured = capsys.readouterr()
+    assert "Fatal error: Init failed" in captured.out
