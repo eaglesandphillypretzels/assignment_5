@@ -33,3 +33,19 @@ def test_exit_command(save_side_effect, expected_output, capsys):
     
     captured = capsys.readouterr()
     assert expected_output in captured.out
+
+# Testing History with Calculation Entries
+
+def test_history_with_entries(capsys):
+    """Test history command when there are calculations"""
+    mock_history = ["1 + 1 = 2", "2 * 3 = 6"]
+    
+    with patch('app.calculator.Calculator.show_history', return_value=mock_history):
+        with patch('builtins.input', side_effect=['history', 'exit']):
+            calculator_repl()
+    
+    captured = capsys.readouterr()
+    assert "Calculation History:" in captured.out
+    assert "1. 1 + 1 = 2" in captured.out
+    assert "2. 2 * 3 = 6" in captured.out
+

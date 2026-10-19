@@ -784,3 +784,52 @@
 2026-10-18 23:54:46,098 - INFO - Calculator initialized with configuration
 2026-10-18 23:54:46,098 - INFO - Added observer: LoggingObserver
 2026-10-18 23:54:46,098 - INFO - Added observer: AutoSaveObserver
+2026-10-19 14:17:18,935 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-10-19 14:17:18,953 - INFO - Loaded 38 calculations from history
+2026-10-19 14:17:18,954 - INFO - Calculator initialized with configuration
+2026-10-19 14:17:18,954 - INFO - Added observer: LoggingObserver
+2026-10-19 14:17:18,954 - INFO - Added observer: AutoSaveObserver
+2026-10-19 14:17:18,960 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-10-19 14:17:18,974 - INFO - Loaded 38 calculations from history
+2026-10-19 14:17:18,974 - INFO - Calculator initialized with configuration
+2026-10-19 14:17:18,974 - INFO - Added observer: LoggingObserver
+2026-10-19 14:17:18,974 - INFO - Added observer: AutoSaveObserver
+2026-10-19 14:17:18,985 - INFO - History saved successfully to /home/joyadwoa/projects/assignment5/test_history/test_history.csv
+2026-10-19 14:17:18,993 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-10-19 14:17:19,001 - INFO - Loaded 38 calculations from history
+2026-10-19 14:17:19,001 - INFO - Calculator initialized with configuration
+2026-10-19 14:17:19,001 - INFO - Added observer: LoggingObserver
+2026-10-19 14:17:19,001 - INFO - Added observer: AutoSaveObserver
+2026-10-19 14:17:19,002 - INFO - Set operation: Addition
+2026-10-19 14:17:19,002 - INFO - Calculation performed: Addition (2, 3) = 5
+2026-10-19 14:17:19,006 - INFO - History saved successfully to /home/joyadwoa/projects/assignment5/test_history/test_history.csv
+2026-10-19 14:17:19,016 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-10-19 14:17:19,032 - INFO - Loaded 39 calculations from history
+2026-10-19 14:17:19,032 - INFO - Calculator initialized with configuration
+2026-10-19 14:17:19,032 - INFO - Added observer: LoggingObserver
+2026-10-19 14:17:19,033 - INFO - Added observer: AutoSaveObserver
+2026-10-19 14:17:19,038 - INFO - History saved successfully to /home/joyadwoa/projects/assignment5/test_history/test_history.csv
+2026-10-19 14:17:19,047 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-10-19 14:17:19,064 - INFO - Loaded 39 calculations from history
+2026-10-19 14:17:19,065 - INFO - Calculator initialized with configuration
+2026-10-19 14:17:19,065 - INFO - Added observer: LoggingObserver
+2026-10-19 14:17:19,068 - INFO - Added observer: AutoSaveObserver
+2026-10-19 14:17:19,070 - INFO - History cleared
+2026-10-19 14:17:19,082 - INFO - Empty history saved
+2026-10-19 14:17:19,093 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-10-19 14:17:19,102 - INFO - Loaded empty history file
+2026-10-19 14:17:19,103 - INFO - Calculator initialized with configuration
+2026-10-19 14:17:19,103 - INFO - Added observer: LoggingObserver
+2026-10-19 14:17:19,103 - INFO - Added observer: AutoSaveObserver
+2026-10-19 14:17:19,109 - INFO - Empty history saved
+2026-10-19 14:17:19,120 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-10-19 14:17:19,127 - INFO - Loaded empty history file
+2026-10-19 14:17:19,128 - INFO - Calculator initialized with configuration
+2026-10-19 14:17:19,128 - INFO - Added observer: LoggingObserver
+2026-10-19 14:17:19,128 - INFO - Added observer: AutoSaveObserver
+2026-10-19 14:17:19,140 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-10-19 14:17:19,148 - INFO - Loaded empty history file
+2026-10-19 14:17:19,148 - INFO - Calculator initialized with configuration
+2026-10-19 14:17:19,149 - INFO - Added observer: LoggingObserver
+2026-10-19 14:17:19,149 - INFO - Added observer: AutoSaveObserver
+2026-10-19 14:17:19,260 - INFO - History auto-saved
