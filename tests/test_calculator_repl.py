@@ -49,3 +49,20 @@ def test_history_with_entries(capsys):
     assert "1. 1 + 1 = 2" in captured.out
     assert "2. 2 * 3 = 6" in captured.out
 
+# Testing Undo/Redo Commands
+
+@pytest.mark.parametrize("command,undo_redo_return,expected_output", [
+    ("undo", True, "Operation undone"),
+    ("undo", False, "Nothing to undo"),
+    ("redo", True, "Operation redone"),
+    ("redo", False, "Nothing to redo"),
+])
+def test_undo_redo_commands(command, undo_redo_return, expected_output, capsys):
+    """Test undo and redo commands with different outcomes"""
+    with patch(f'app.calculator.Calculator.{command}', return_value=undo_redo_return):
+        with patch('builtins.input', side_effect=[command, 'exit']):
+            calculator_repl()
+    
+    captured = capsys.readouterr()
+    assert expected_output in captured.out
+
