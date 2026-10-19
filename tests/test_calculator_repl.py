@@ -139,3 +139,14 @@ def test_eof_error(capsys):
     
     captured = capsys.readouterr()
     assert "Input terminated. Exiting..." in captured.out
+
+# Testing Unknown Commands
+
+def test_unknown_command(capsys):
+    """Test handling of unknown commands"""
+    with patch('builtins.input', side_effect=['unknown_cmd', 'exit']):
+        calculator_repl()
+    
+    captured = capsys.readouterr()
+    assert "Unknown command: 'unknown_cmd'" in captured.out
+
