@@ -111,7 +111,7 @@ class Calculation:
             y (Decimal): The degree of the root.
         """
         if y == 0:
-            raise OperationError("Zero root is undefined")
+            raise OperationError("Division by zero is not allowed")
         if x < 0:
             raise OperationError("Cannot calculate root of negative number")
         raise OperationError("Invalid root operation")

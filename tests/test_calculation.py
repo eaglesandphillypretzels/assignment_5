@@ -53,7 +53,7 @@ def test_invalid_root():
 
 def test_root_zero_degree():
     """Test that calculating the root with degree zero raises an OperationError."""
-    with pytest.raises(OperationError, match="Cannot calculate root with degree zero"):
+    with pytest.raises(OperationError, match="Division by zero is not allowed"):
         Calculation("Root", Decimal("16"), Decimal("0"))
 
 def test_unknown_operation():
