@@ -133,6 +133,14 @@ def test_operation_exceptions(exception_class, expected_output, capsys):
     captured = capsys.readouterr()
     assert expected_output in captured.out
 
+def test_inner_generic_exception(capsys):
+    """Cover lines 156-157: Inner generic exception handler"""
+    with patch('builtins.input', side_effect=[Exception("Something weird happened"), 'exit']):
+        calculator_repl()
+    
+    captured = capsys.readouterr()
+    assert "Error: Something weird happened" in captured.out
+
 # Testing Keyboard Interrupts, End-of-File (EOF)
 
 def test_keyboard_interrupt(capsys):
