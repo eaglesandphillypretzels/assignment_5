@@ -66,3 +66,17 @@ def test_undo_redo_commands(command, undo_redo_return, expected_output, capsys):
     captured = capsys.readouterr()
     assert expected_output in captured.out
 
+# Testing Save/Load Commands with Errors (Exceptions)
+
+@pytest.mark.parametrize("command,method,side_effect,expected_output", [
+    ("save", "save_history", Exception("Disk full"), "Error saving history"),
+    ("load", "load_history", Exception("File not found"), "Error loading history"),
+])
+def test_save_load_errors(command, method, side_effect, expected_output, capsys):
+    """Test save and load commands when errors occur"""
+    with patch(f'app.calculator.Calculator.{method}', side_effect=side_effect):
+        with patch('builtins.input', side_effect=[command, 'exit']):
+            calculator_repl()
+    
+    captured = capsys.readouterr()
+    assert expected_output in captured.out
