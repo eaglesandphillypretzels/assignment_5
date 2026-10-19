@@ -104,3 +104,20 @@ def test_arithmetic_operations(operation, inputs, expected_output, capsys):
     
     captured = capsys.readouterr()
     assert expected_output in captured.out
+
+# Testing Exception Handling in Operations
+
+@pytest.mark.parametrize("exception_class,expected_output", [
+    (ValidationError("Invalid input"), "Error: Invalid input"),
+    (OperationError("Division by zero"), "Error: Division by zero"),
+    (Exception("Unexpected"), "Unexpected error: Unexpected"),
+])
+def test_operation_exceptions(exception_class, expected_output, capsys):
+    """Test exception handling during arithmetic operations"""
+    with patch('app.operations.OperationFactory.create_operation'):
+        with patch('app.calculator.Calculator.perform_operation', side_effect=exception_class):
+            with patch('builtins.input', side_effect=['add', '1', '2', 'exit']):
+                calculator_repl()
+    
+    captured = capsys.readouterr()
+    assert expected_output in captured.out
