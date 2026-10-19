@@ -80,3 +80,27 @@ def test_save_load_errors(command, method, side_effect, expected_output, capsys)
     
     captured = capsys.readouterr()
     assert expected_output in captured.out
+
+# Testing Arithmetic Operations
+
+@pytest.mark.parametrize("operation,inputs,expected_output", [
+    # Successful operation with Decimal result
+    ("add", ["1.5", "2.5"], "Result: 4"),
+    # Cancel at first input
+    ("subtract", ["cancel"], "Operation cancelled"),
+    # Cancel at second input
+    ("multiply", ["5", "cancel"], "Operation cancelled"),
+])
+def test_arithmetic_operations(operation, inputs, expected_output, capsys):
+    """Test arithmetic operations with various scenarios"""
+    with patch('app.operations.OperationFactory.create_operation') as mock_factory:
+        mock_operation = MagicMock()
+        mock_factory.return_value = mock_operation
+        
+        # Mock perform_operation to return a Decimal
+        with patch('app.calculator.Calculator.perform_operation', return_value=Decimal("4.0")):
+            with patch('builtins.input', side_effect=inputs + ['exit']):
+                calculator_repl()
+    
+    captured = capsys.readouterr()
+    assert expected_output in captured.out
