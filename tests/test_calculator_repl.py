@@ -150,3 +150,14 @@ def test_unknown_command(capsys):
     captured = capsys.readouterr()
     assert "Unknown command: 'unknown_cmd'" in captured.out
 
+# Testing Fatal Initialization Error
+
+def test_fatal_initialization_error(capsys):
+    """Test fatal error during Calculator initialization"""
+    with patch('app.calculator.Calculator', side_effect=Exception("Init failed")):
+        with pytest.raises(Exception) as exc_info:
+            calculator_repl()
+    
+    assert "Init failed" in str(exc_info.value)
+    captured = capsys.readouterr()
+    assert "Fatal error: Init failed" in captured.out
