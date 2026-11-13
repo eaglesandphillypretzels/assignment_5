@@ -181,7 +181,7 @@ def test_fatal_initialization_error(capsys):
     captured = capsys.readouterr()
     assert "Fatal error: Init failed" in captured.out
 
-patch('builtins.input', side_effect=['exit'])
+@patch('builtins.input', side_effect=['exit'])
 @patch('app.calculator_repl.Calculator.save_history', side_effect=Exception("Disk full"))
 def test_repl_exit_save_error(mock_save, mock_input, capsys):
     """Cover the except block when saving history on exit fails."""

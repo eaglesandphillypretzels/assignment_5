@@ -3297,3 +3297,388 @@
 2026-11-12 00:42:53,910 - INFO - Empty history saved
 2026-11-12 00:42:53,912 - ERROR - Fatal error in calculator REPL: Init failed
 2026-11-12 00:42:53,940 - INFO - History auto-saved
+2026-11-13 18:19:53,746 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:19:53,755 - INFO - Loaded empty history file
+2026-11-13 18:19:53,756 - INFO - Calculator initialized with configuration
+2026-11-13 18:19:53,757 - INFO - Added observer: LoggingObserver
+2026-11-13 18:19:53,760 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:19:53,770 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:19:53,784 - INFO - Loaded empty history file
+2026-11-13 18:19:53,785 - INFO - Calculator initialized with configuration
+2026-11-13 18:19:53,785 - INFO - Added observer: LoggingObserver
+2026-11-13 18:19:53,785 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:19:53,800 - INFO - Empty history saved
+2026-11-13 18:19:53,815 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:19:53,821 - INFO - Loaded empty history file
+2026-11-13 18:19:53,821 - INFO - Calculator initialized with configuration
+2026-11-13 18:19:53,822 - INFO - Added observer: LoggingObserver
+2026-11-13 18:19:53,822 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:19:53,822 - INFO - Set operation: Addition
+2026-11-13 18:19:53,823 - INFO - Calculation performed: Addition (2, 3) = 5
+2026-11-13 18:19:53,831 - INFO - History saved successfully to /home/joyadwoa/projects/assignment5/test_history/test_history.csv
+2026-11-13 18:19:53,843 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:19:53,858 - INFO - Loaded 1 calculations from history
+2026-11-13 18:19:53,858 - INFO - Calculator initialized with configuration
+2026-11-13 18:19:53,858 - INFO - Added observer: LoggingObserver
+2026-11-13 18:19:53,859 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:19:53,868 - INFO - History saved successfully to /home/joyadwoa/projects/assignment5/test_history/test_history.csv
+2026-11-13 18:19:53,885 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:19:53,896 - INFO - Loaded 1 calculations from history
+2026-11-13 18:19:53,897 - INFO - Calculator initialized with configuration
+2026-11-13 18:19:53,897 - INFO - Added observer: LoggingObserver
+2026-11-13 18:19:53,897 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:19:53,897 - INFO - History cleared
+2026-11-13 18:19:53,903 - INFO - Empty history saved
+2026-11-13 18:19:53,919 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:19:53,929 - INFO - Loaded empty history file
+2026-11-13 18:19:53,930 - INFO - Calculator initialized with configuration
+2026-11-13 18:19:53,931 - INFO - Added observer: LoggingObserver
+2026-11-13 18:19:53,932 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:19:53,942 - INFO - Empty history saved
+2026-11-13 18:19:53,955 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:19:53,966 - INFO - Loaded empty history file
+2026-11-13 18:19:53,966 - INFO - Calculator initialized with configuration
+2026-11-13 18:19:53,966 - INFO - Added observer: LoggingObserver
+2026-11-13 18:19:53,967 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:19:53,984 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:19:53,999 - INFO - Loaded empty history file
+2026-11-13 18:19:53,999 - INFO - Calculator initialized with configuration
+2026-11-13 18:19:53,999 - INFO - Added observer: LoggingObserver
+2026-11-13 18:19:54,000 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:19:54,007 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:19:54,018 - INFO - Loaded empty history file
+2026-11-13 18:19:54,019 - INFO - Calculator initialized with configuration
+2026-11-13 18:19:54,019 - INFO - Added observer: LoggingObserver
+2026-11-13 18:19:54,019 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:19:54,027 - INFO - Empty history saved
+2026-11-13 18:19:54,041 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:19:54,048 - INFO - Loaded empty history file
+2026-11-13 18:19:54,049 - INFO - Calculator initialized with configuration
+2026-11-13 18:19:54,049 - INFO - Added observer: LoggingObserver
+2026-11-13 18:19:54,049 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:19:54,056 - INFO - Empty history saved
+2026-11-13 18:19:54,075 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:19:54,084 - INFO - Loaded empty history file
+2026-11-13 18:19:54,085 - INFO - Calculator initialized with configuration
+2026-11-13 18:19:54,085 - INFO - Added observer: LoggingObserver
+2026-11-13 18:19:54,085 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:19:54,094 - INFO - Empty history saved
+2026-11-13 18:19:54,105 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:19:54,130 - INFO - Loaded empty history file
+2026-11-13 18:19:54,131 - INFO - Calculator initialized with configuration
+2026-11-13 18:19:54,131 - INFO - Added observer: LoggingObserver
+2026-11-13 18:19:54,132 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:19:54,139 - INFO - Empty history saved
+2026-11-13 18:19:54,154 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:19:54,167 - INFO - Loaded empty history file
+2026-11-13 18:19:54,168 - INFO - Calculator initialized with configuration
+2026-11-13 18:19:54,169 - INFO - Added observer: LoggingObserver
+2026-11-13 18:19:54,170 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:19:54,185 - INFO - Empty history saved
+2026-11-13 18:19:54,204 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:19:54,214 - INFO - Loaded empty history file
+2026-11-13 18:19:54,215 - INFO - Calculator initialized with configuration
+2026-11-13 18:19:54,215 - INFO - Added observer: LoggingObserver
+2026-11-13 18:19:54,215 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:19:54,230 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:19:54,233 - INFO - Calculator initialized with configuration
+2026-11-13 18:19:54,234 - INFO - Added observer: LoggingObserver
+2026-11-13 18:19:54,234 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:19:54,247 - INFO - Empty history saved
+2026-11-13 18:19:54,269 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:19:54,285 - INFO - Loaded empty history file
+2026-11-13 18:19:54,286 - INFO - Calculator initialized with configuration
+2026-11-13 18:19:54,286 - INFO - Added observer: LoggingObserver
+2026-11-13 18:19:54,286 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:19:54,302 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:19:54,303 - WARNING - Could not load existing history: File not found
+2026-11-13 18:19:54,304 - INFO - Calculator initialized with configuration
+2026-11-13 18:19:54,304 - INFO - Added observer: LoggingObserver
+2026-11-13 18:19:54,304 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:19:54,314 - INFO - Empty history saved
+2026-11-13 18:19:54,338 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:19:54,351 - INFO - Loaded empty history file
+2026-11-13 18:19:54,352 - INFO - Calculator initialized with configuration
+2026-11-13 18:19:54,353 - INFO - Added observer: LoggingObserver
+2026-11-13 18:19:54,353 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:19:54,356 - INFO - Set operation: <MagicMock name='create_operation()' id='129303499655600'>
+2026-11-13 18:19:54,367 - INFO - Empty history saved
+2026-11-13 18:19:54,385 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:19:54,397 - INFO - Loaded empty history file
+2026-11-13 18:19:54,397 - INFO - Calculator initialized with configuration
+2026-11-13 18:19:54,398 - INFO - Added observer: LoggingObserver
+2026-11-13 18:19:54,399 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:19:54,409 - INFO - Empty history saved
+2026-11-13 18:19:54,430 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:19:54,436 - INFO - Loaded empty history file
+2026-11-13 18:19:54,437 - INFO - Calculator initialized with configuration
+2026-11-13 18:19:54,437 - INFO - Added observer: LoggingObserver
+2026-11-13 18:19:54,437 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:19:54,446 - INFO - Empty history saved
+2026-11-13 18:19:54,455 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:19:54,468 - INFO - Loaded empty history file
+2026-11-13 18:19:54,468 - INFO - Calculator initialized with configuration
+2026-11-13 18:19:54,469 - INFO - Added observer: LoggingObserver
+2026-11-13 18:19:54,469 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:19:54,470 - INFO - Set operation: <MagicMock name='create_operation()' id='129304069800640'>
+2026-11-13 18:19:54,481 - INFO - Empty history saved
+2026-11-13 18:19:54,506 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:19:54,524 - INFO - Loaded empty history file
+2026-11-13 18:19:54,525 - INFO - Calculator initialized with configuration
+2026-11-13 18:19:54,525 - INFO - Added observer: LoggingObserver
+2026-11-13 18:19:54,525 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:19:54,527 - INFO - Set operation: <MagicMock name='create_operation()' id='129303500052320'>
+2026-11-13 18:19:54,536 - INFO - Empty history saved
+2026-11-13 18:19:54,551 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:19:54,568 - INFO - Loaded empty history file
+2026-11-13 18:19:54,569 - INFO - Calculator initialized with configuration
+2026-11-13 18:19:54,569 - INFO - Added observer: LoggingObserver
+2026-11-13 18:19:54,569 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:19:54,571 - INFO - Set operation: <MagicMock name='create_operation()' id='129303499808528'>
+2026-11-13 18:19:54,582 - INFO - Empty history saved
+2026-11-13 18:19:54,600 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:19:54,610 - INFO - Loaded empty history file
+2026-11-13 18:19:54,610 - INFO - Calculator initialized with configuration
+2026-11-13 18:19:54,611 - INFO - Added observer: LoggingObserver
+2026-11-13 18:19:54,611 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:19:54,623 - INFO - Empty history saved
+2026-11-13 18:19:54,638 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:19:54,651 - INFO - Loaded empty history file
+2026-11-13 18:19:54,652 - INFO - Calculator initialized with configuration
+2026-11-13 18:19:54,653 - INFO - Added observer: LoggingObserver
+2026-11-13 18:19:54,653 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:19:54,670 - INFO - Empty history saved
+2026-11-13 18:19:54,687 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:19:54,707 - INFO - Loaded empty history file
+2026-11-13 18:19:54,709 - INFO - Calculator initialized with configuration
+2026-11-13 18:19:54,709 - INFO - Added observer: LoggingObserver
+2026-11-13 18:19:54,712 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:19:54,733 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:19:54,740 - INFO - Loaded empty history file
+2026-11-13 18:19:54,740 - INFO - Calculator initialized with configuration
+2026-11-13 18:19:54,741 - INFO - Added observer: LoggingObserver
+2026-11-13 18:19:54,741 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:19:54,747 - INFO - Empty history saved
+2026-11-13 18:19:54,755 - ERROR - Fatal error in calculator REPL: Init failed
+2026-11-13 18:19:54,784 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:19:54,792 - INFO - Loaded empty history file
+2026-11-13 18:19:54,793 - INFO - Calculator initialized with configuration
+2026-11-13 18:19:54,793 - INFO - Added observer: LoggingObserver
+2026-11-13 18:19:54,793 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:19:54,809 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:19:54,813 - WARNING - Could not load existing history: File corrupted
+2026-11-13 18:19:54,814 - INFO - Calculator initialized with configuration
+2026-11-13 18:19:54,815 - INFO - Added observer: LoggingObserver
+2026-11-13 18:19:54,816 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:19:54,829 - INFO - Empty history saved
+2026-11-13 18:19:54,846 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:19:54,860 - INFO - Loaded empty history file
+2026-11-13 18:19:54,860 - INFO - Calculator initialized with configuration
+2026-11-13 18:19:54,861 - INFO - Added observer: LoggingObserver
+2026-11-13 18:19:54,861 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:19:54,861 - INFO - Set operation: Addition
+2026-11-13 18:19:54,862 - ERROR - Validation error: Invalid number format: invalid_number
+2026-11-13 18:19:54,872 - INFO - Empty history saved
+2026-11-13 18:19:54,888 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:19:54,905 - INFO - Loaded empty history file
+2026-11-13 18:19:54,905 - INFO - Calculator initialized with configuration
+2026-11-13 18:19:54,906 - INFO - Added observer: LoggingObserver
+2026-11-13 18:19:54,906 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:19:54,906 - INFO - Set operation: Addition
+2026-11-13 18:19:54,926 - INFO - Empty history saved
+2026-11-13 18:19:55,349 - INFO - History auto-saved
+2026-11-13 18:23:24,883 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:23:24,892 - INFO - Loaded empty history file
+2026-11-13 18:23:24,893 - INFO - Calculator initialized with configuration
+2026-11-13 18:23:24,893 - INFO - Added observer: LoggingObserver
+2026-11-13 18:23:24,894 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:23:24,902 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:23:24,907 - INFO - Loaded empty history file
+2026-11-13 18:23:24,907 - INFO - Calculator initialized with configuration
+2026-11-13 18:23:24,907 - INFO - Added observer: LoggingObserver
+2026-11-13 18:23:24,907 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:23:24,917 - INFO - Empty history saved
+2026-11-13 18:23:24,929 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:23:24,936 - INFO - Loaded empty history file
+2026-11-13 18:23:24,937 - INFO - Calculator initialized with configuration
+2026-11-13 18:23:24,937 - INFO - Added observer: LoggingObserver
+2026-11-13 18:23:24,937 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:23:24,938 - INFO - Set operation: Addition
+2026-11-13 18:23:24,938 - INFO - Calculation performed: Addition (2, 3) = 5
+2026-11-13 18:23:24,944 - INFO - History saved successfully to /home/joyadwoa/projects/assignment5/test_history/test_history.csv
+2026-11-13 18:23:24,959 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:23:24,971 - INFO - Loaded 1 calculations from history
+2026-11-13 18:23:24,971 - INFO - Calculator initialized with configuration
+2026-11-13 18:23:24,972 - INFO - Added observer: LoggingObserver
+2026-11-13 18:23:24,972 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:23:24,980 - INFO - History saved successfully to /home/joyadwoa/projects/assignment5/test_history/test_history.csv
+2026-11-13 18:23:24,997 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:23:25,003 - INFO - Loaded 1 calculations from history
+2026-11-13 18:23:25,003 - INFO - Calculator initialized with configuration
+2026-11-13 18:23:25,003 - INFO - Added observer: LoggingObserver
+2026-11-13 18:23:25,003 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:23:25,004 - INFO - History cleared
+2026-11-13 18:23:25,007 - INFO - Empty history saved
+2026-11-13 18:23:25,016 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:23:25,027 - INFO - Loaded empty history file
+2026-11-13 18:23:25,030 - INFO - Calculator initialized with configuration
+2026-11-13 18:23:25,030 - INFO - Added observer: LoggingObserver
+2026-11-13 18:23:25,030 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:23:25,038 - INFO - Empty history saved
+2026-11-13 18:23:25,053 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:23:25,071 - INFO - Loaded empty history file
+2026-11-13 18:23:25,072 - INFO - Calculator initialized with configuration
+2026-11-13 18:23:25,072 - INFO - Added observer: LoggingObserver
+2026-11-13 18:23:25,073 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:23:25,091 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:23:25,109 - INFO - Loaded empty history file
+2026-11-13 18:23:25,109 - INFO - Calculator initialized with configuration
+2026-11-13 18:23:25,110 - INFO - Added observer: LoggingObserver
+2026-11-13 18:23:25,110 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:23:25,123 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:23:25,132 - INFO - Loaded empty history file
+2026-11-13 18:23:25,132 - INFO - Calculator initialized with configuration
+2026-11-13 18:23:25,132 - INFO - Added observer: LoggingObserver
+2026-11-13 18:23:25,133 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:23:25,137 - INFO - Empty history saved
+2026-11-13 18:23:25,151 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:23:25,163 - INFO - Loaded empty history file
+2026-11-13 18:23:25,163 - INFO - Calculator initialized with configuration
+2026-11-13 18:23:25,164 - INFO - Added observer: LoggingObserver
+2026-11-13 18:23:25,164 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:23:25,171 - INFO - Empty history saved
+2026-11-13 18:23:25,191 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:23:25,209 - INFO - Loaded empty history file
+2026-11-13 18:23:25,210 - INFO - Calculator initialized with configuration
+2026-11-13 18:23:25,211 - INFO - Added observer: LoggingObserver
+2026-11-13 18:23:25,212 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:23:25,220 - INFO - Empty history saved
+2026-11-13 18:23:25,241 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:23:25,266 - INFO - Loaded empty history file
+2026-11-13 18:23:25,267 - INFO - Calculator initialized with configuration
+2026-11-13 18:23:25,267 - INFO - Added observer: LoggingObserver
+2026-11-13 18:23:25,267 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:23:25,279 - INFO - Empty history saved
+2026-11-13 18:23:25,302 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:23:25,316 - INFO - Loaded empty history file
+2026-11-13 18:23:25,317 - INFO - Calculator initialized with configuration
+2026-11-13 18:23:25,317 - INFO - Added observer: LoggingObserver
+2026-11-13 18:23:25,318 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:23:25,325 - INFO - Empty history saved
+2026-11-13 18:23:25,342 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:23:25,358 - INFO - Loaded empty history file
+2026-11-13 18:23:25,358 - INFO - Calculator initialized with configuration
+2026-11-13 18:23:25,358 - INFO - Added observer: LoggingObserver
+2026-11-13 18:23:25,358 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:23:25,372 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:23:25,377 - INFO - Calculator initialized with configuration
+2026-11-13 18:23:25,378 - INFO - Added observer: LoggingObserver
+2026-11-13 18:23:25,379 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:23:25,386 - INFO - Empty history saved
+2026-11-13 18:23:25,405 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:23:25,419 - INFO - Loaded empty history file
+2026-11-13 18:23:25,419 - INFO - Calculator initialized with configuration
+2026-11-13 18:23:25,419 - INFO - Added observer: LoggingObserver
+2026-11-13 18:23:25,419 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:23:25,436 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:23:25,437 - WARNING - Could not load existing history: File not found
+2026-11-13 18:23:25,438 - INFO - Calculator initialized with configuration
+2026-11-13 18:23:25,438 - INFO - Added observer: LoggingObserver
+2026-11-13 18:23:25,438 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:23:25,449 - INFO - Empty history saved
+2026-11-13 18:23:25,474 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:23:25,509 - INFO - Loaded empty history file
+2026-11-13 18:23:25,509 - INFO - Calculator initialized with configuration
+2026-11-13 18:23:25,510 - INFO - Added observer: LoggingObserver
+2026-11-13 18:23:25,511 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:23:25,513 - INFO - Set operation: <MagicMock name='create_operation()' id='134907097548704'>
+2026-11-13 18:23:25,527 - INFO - Empty history saved
+2026-11-13 18:23:25,543 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:23:25,558 - INFO - Loaded empty history file
+2026-11-13 18:23:25,560 - INFO - Calculator initialized with configuration
+2026-11-13 18:23:25,561 - INFO - Added observer: LoggingObserver
+2026-11-13 18:23:25,562 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:23:25,568 - INFO - Empty history saved
+2026-11-13 18:23:25,587 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:23:25,599 - INFO - Loaded empty history file
+2026-11-13 18:23:25,599 - INFO - Calculator initialized with configuration
+2026-11-13 18:23:25,599 - INFO - Added observer: LoggingObserver
+2026-11-13 18:23:25,600 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:23:25,612 - INFO - Empty history saved
+2026-11-13 18:23:25,622 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:23:25,637 - INFO - Loaded empty history file
+2026-11-13 18:23:25,638 - INFO - Calculator initialized with configuration
+2026-11-13 18:23:25,638 - INFO - Added observer: LoggingObserver
+2026-11-13 18:23:25,638 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:23:25,639 - INFO - Set operation: <MagicMock name='create_operation()' id='134907660052880'>
+2026-11-13 18:23:25,648 - INFO - Empty history saved
+2026-11-13 18:23:25,663 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:23:25,671 - INFO - Loaded empty history file
+2026-11-13 18:23:25,672 - INFO - Calculator initialized with configuration
+2026-11-13 18:23:25,672 - INFO - Added observer: LoggingObserver
+2026-11-13 18:23:25,672 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:23:25,674 - INFO - Set operation: <MagicMock name='create_operation()' id='134907097944128'>
+2026-11-13 18:23:25,686 - INFO - Empty history saved
+2026-11-13 18:23:25,697 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:23:25,708 - INFO - Loaded empty history file
+2026-11-13 18:23:25,708 - INFO - Calculator initialized with configuration
+2026-11-13 18:23:25,708 - INFO - Added observer: LoggingObserver
+2026-11-13 18:23:25,709 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:23:25,710 - INFO - Set operation: <MagicMock name='create_operation()' id='134907097699856'>
+2026-11-13 18:23:25,717 - INFO - Empty history saved
+2026-11-13 18:23:25,724 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:23:25,732 - INFO - Loaded empty history file
+2026-11-13 18:23:25,732 - INFO - Calculator initialized with configuration
+2026-11-13 18:23:25,733 - INFO - Added observer: LoggingObserver
+2026-11-13 18:23:25,733 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:23:25,738 - INFO - Empty history saved
+2026-11-13 18:23:25,747 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:23:25,753 - INFO - Loaded empty history file
+2026-11-13 18:23:25,754 - INFO - Calculator initialized with configuration
+2026-11-13 18:23:25,754 - INFO - Added observer: LoggingObserver
+2026-11-13 18:23:25,754 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:23:25,761 - INFO - Empty history saved
+2026-11-13 18:23:25,767 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:23:25,777 - INFO - Loaded empty history file
+2026-11-13 18:23:25,777 - INFO - Calculator initialized with configuration
+2026-11-13 18:23:25,778 - INFO - Added observer: LoggingObserver
+2026-11-13 18:23:25,778 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:23:25,784 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:23:25,795 - INFO - Loaded empty history file
+2026-11-13 18:23:25,796 - INFO - Calculator initialized with configuration
+2026-11-13 18:23:25,797 - INFO - Added observer: LoggingObserver
+2026-11-13 18:23:25,797 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:23:25,806 - INFO - Empty history saved
+2026-11-13 18:23:25,812 - ERROR - Fatal error in calculator REPL: Init failed
+2026-11-13 18:23:25,821 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:23:25,829 - INFO - Loaded empty history file
+2026-11-13 18:23:25,829 - INFO - Calculator initialized with configuration
+2026-11-13 18:23:25,829 - INFO - Added observer: LoggingObserver
+2026-11-13 18:23:25,829 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:23:25,844 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:23:25,857 - INFO - Loaded empty history file
+2026-11-13 18:23:25,858 - INFO - Calculator initialized with configuration
+2026-11-13 18:23:25,858 - INFO - Added observer: LoggingObserver
+2026-11-13 18:23:25,858 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:23:25,877 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:23:25,878 - WARNING - Could not load existing history: File corrupted
+2026-11-13 18:23:25,878 - INFO - Calculator initialized with configuration
+2026-11-13 18:23:25,878 - INFO - Added observer: LoggingObserver
+2026-11-13 18:23:25,878 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:23:25,885 - INFO - Empty history saved
+2026-11-13 18:23:25,898 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:23:25,915 - INFO - Loaded empty history file
+2026-11-13 18:23:25,916 - INFO - Calculator initialized with configuration
+2026-11-13 18:23:25,916 - INFO - Added observer: LoggingObserver
+2026-11-13 18:23:25,917 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:23:25,917 - INFO - Set operation: Addition
+2026-11-13 18:23:25,918 - ERROR - Validation error: Invalid number format: invalid_number
+2026-11-13 18:23:25,929 - INFO - Empty history saved
+2026-11-13 18:23:25,939 - INFO - Logging initialized at: /home/joyadwoa/projects/assignment5/test_logs/test_log.log
+2026-11-13 18:23:25,952 - INFO - Loaded empty history file
+2026-11-13 18:23:25,952 - INFO - Calculator initialized with configuration
+2026-11-13 18:23:25,953 - INFO - Added observer: LoggingObserver
+2026-11-13 18:23:25,953 - INFO - Added observer: AutoSaveObserver
+2026-11-13 18:23:25,953 - INFO - Set operation: Addition
+2026-11-13 18:23:25,961 - INFO - Empty history saved
+2026-11-13 18:23:26,257 - INFO - History auto-saved
