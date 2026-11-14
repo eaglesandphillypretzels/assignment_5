@@ -46,7 +46,7 @@ def calculator_repl():
                     print("  save - Save calculation history to file")
                     print("  load - Load calculation history from file")
                     print("  exit - Exit the calculator")
-                    continue
+                    continue 
 
                 if command == 'exit':
                     # Attempt to save history before exiting
