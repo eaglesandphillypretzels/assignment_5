@@ -12,6 +12,8 @@ from app.operations import (
     Power,
     Root,
     OperationFactory,
+    Modulus,
+    AbsoluteDifference,
 )
 
 
@@ -194,6 +196,8 @@ class TestOperationFactory:
             'divide': Division,
             'power': Power,
             'root': Root,
+            'modulo': Modulus,
+            'absolute difference': AbsoluteDifference
         }
 
         for op_name, op_class in operation_map.items():
