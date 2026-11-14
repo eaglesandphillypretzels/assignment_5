@@ -225,3 +225,15 @@ class TestOperationFactory:
 
         with pytest.raises(TypeError, match="Operation class must inherit"):
             OperationFactory.register_operation("invalid", InvalidOperation)
+
+def test_root_negative_radicand_odd_root():
+    """Covers the 'if a < 0:' branch - cube root of -8 should be -2"""
+    op = Root()
+    result = op.execute(Decimal("-8"), Decimal("3"))
+    assert result == Decimal("-2")
+
+def test_root_positive_radicand():
+    """Covers the final return statement - square root of 16 should be 4"""
+    op = Root()
+    result = op.execute(Decimal("16"), Decimal("2"))
+    assert result == Decimal("4")
