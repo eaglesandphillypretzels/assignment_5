@@ -80,7 +80,7 @@ def calculator_repl():
                     if calc.undo():
                         print(Fore.CYAN + "Operation undone")
                     else:
-                        print("Nothing to undo")
+                        print(Fore.CYAN + "Nothing to undo")
                     continue
 
                 if command == 'redo':
