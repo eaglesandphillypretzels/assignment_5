@@ -248,6 +248,78 @@ class Root(Operation):
         self.validate_operands(a, b)
         return Decimal(pow(float(a), 1 / float(b)))
 
+class Modulus(Operation):
+    """
+    Modulus operation implementation.
+
+    Returns the remainder of dividing one number by another.
+    """
+
+    def validate_operands(self, a: Decimal, b: Decimal) -> None:
+        """
+        Validate operands, checking for division by zero.
+
+        Overrides the base class method to ensure the divisor is not zero.
+
+        Args:
+            a (Decimal): Dividend.
+            b (Decimal): Divisor.
+
+        Raises:
+            ValidationError: If the divisor is zero.
+        """
+        super().validate_operands(a, b)
+        if b == 0:
+            raise ValidationError("Modulo by zero is not allowed")
+
+    def execute(self, a: Decimal, b: Decimal) -> Decimal:
+        """
+        Calculate the remainder when dividing one number by another.
+
+        Args:
+            a (Decimal): Dividend.
+            b (Decimal): Divisor.
+
+        Returns:
+            Decimal: Remainder of the division.
+        """
+        self.validate_operands(a, b)
+        return a % b
+
+
+class AbsoluteDifference(Operation):
+    """
+    Absolute difference operation implementation.
+
+    Calculates the magnitude of the difference between two numbers.
+    """
+
+    def validate_operands(self, a: Decimal, b: Decimal) -> None:
+        """
+        Validate operands for absolute difference.
+
+        Uses the base validation and allows any numeric values.
+
+        Args:
+            a (Decimal): First operand.
+            b (Decimal): Second operand.
+        """
+        super().validate_operands(a, b)
+
+    def execute(self, a: Decimal, b: Decimal) -> Decimal:
+        """
+        Calculate the absolute difference between two numbers.
+
+        Args:
+            a (Decimal): First operand.
+            b (Decimal): Second operand.
+
+        Returns:
+            Decimal: Absolute value of the difference.
+        """
+        self.validate_operands(a, b)
+        return abs(a - b)
+
 
 class OperationFactory:
     """
@@ -265,7 +337,9 @@ class OperationFactory:
         'multiply': Multiplication,
         'divide': Division,
         'power': Power,
-        'root': Root
+        'root': Root,
+        'modulus': Modulus,
+        'absolute difference': AbsoluteDifference
     }
 
     @classmethod
